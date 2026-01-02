@@ -13,7 +13,7 @@ const app = express();
 
 // Security & CORS
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'https://e-commerce-shophub.vercel.app/',
   credentials: true
 }));
 
@@ -56,3 +56,5 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`));
+
+app.use('/api/stripe', stripeRoutes);
