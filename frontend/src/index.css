@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent mobile browsers from auto-resizing text
+   -webkit-text-size-adjust is deprecated in some browsers; include the standard property too */
+/* Apply text-size-adjust properties only when the browser reports support.
+   This reduces compatibility tool warnings by avoiding unsupported properties
+   at the top level. */
+@supports (text-size-adjust: 100%) {
+  html {
+    text-size-adjust: 100%;
+  }
+}
+
+@supports (-webkit-text-size-adjust: 100%) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* Your custom neon theme extras */
+body {
+  background: #0a0f1f;
+  color: white;
+}
+
+.neon-text {
+  text-shadow: 0 0 6px #ff00ff;
+}
+
+.neon-border {
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 8px #ff00ff;
+}
+
+.neon-btn {
+  background: linear-gradient(90deg, #ff00ff, #00eaff);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 8px 14px;
+  transition: 0.3s;
+}
+
+.neon-btn:hover {
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00eaff;
+  transform: scale(1.05);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-in-out;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.group:hover {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+}
