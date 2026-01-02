@@ -12,10 +12,23 @@ const stripeRoutes = require('./src/routes/stripeRoutes');
 const app = express();
 
 // Security & CORS
+const allowedOrigins = [
+  "https://e-commerce-shophub.vercel.app",
+  "http://localhost:3000"
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'https://e-commerce-shophub.vercel.app/',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 // Body parser
 app.use(express.json({ limit: '10mb' }));
